@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+void linear();
+void binary();
+int main(){
+	int choice;
+    	clrscr();
+    	do {
+        printf("\n1. Linear Search"); 
+        printf("\n2. Binary Search");
+        printf("\n3. Exit"); 
+        printf("\nEnter choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1:
+                linear();
+                break;
+            case 2:
+                binary(); 
+                break;
+            ¬case 3:
+                exit (0);
+                break;
+        }
+    	}while ((choice >= 1) && (choice <= 2));
+    getch();
+    return 0;
+}
+
+void linear() {
+	int n, c, array[100], search;
+    	printf("\nEnter the number of elements in the array: ");
+    	scanf("%d", &n);
+   	 printf("\nEnter array elements: ");
+    	for (c = 0; c < n; c++) {
+       		scanf("%d", &array[c]);
+    	}
+    	printf("\nEnter the element to be searched: ");
+    	scanf("%d", &search);
+    	for (c = 0; c < n; c++) {
+        		if (array[c] == search) {
+            		printf("\n%d is present at location %d", search, c + 1);
+            		break;
+        		}
+    	}
+   	if (c == n) {
+        		printf("\n%d is not present in the array", search);
+    	}
+}
+
+void binary() {
+	int array[100], n, i, j, mid, temp, low = 0, high, item, flag = 0;
+    	printf("\nEnter the number of elements in the array: ");
+    	scanf("%d", &n);
+    	printf("\nEnter array elements: ");
+    	for (i = 0; i < n; i++) {
+        		scanf("%d", &array[i]);
+    	}
+    	printf("\nEnter the element to be searched: ");
+   	scanf("%d", &item);
+    	high = n - 1;
+    	while (low <= high) {
+        		mid = (low + high) / 2;
+        		if (array[mid] == item) {
+            		printf("\n%d is present at location %d", item, mid + 1);
+            		flag = 1;
+            		break;
+        		} else if (array[mid] < item) {
+           		low = mid + 1;
+        		} else {
+            		high = mid - 1;
+        		}
+    	}
+   	if (flag == 0) {
+        		printf("\n%d is not present in the array\n", item);
+   	}
+}
+
+
